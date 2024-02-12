@@ -1,0 +1,7 @@
+a.txt
+README.md
+src
+src/main
+src/main/A.java
+src/main/B.kt
+src/main/C.java
