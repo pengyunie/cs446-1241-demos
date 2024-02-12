@@ -25,7 +25,8 @@ public class ShellExample {
 
 /** A filter that finds all files under each given directory. */
 class FindFilesFilter extends AbstractFilter {
-    public void runInternal(String data) {
+    @Override
+    protected void runInternal(String data) {
         try {
             for (Path path : Files.walk(Paths.get(data)).toList()) {
                 emit(path.toString());
@@ -42,7 +43,8 @@ class FindFilesFilter extends AbstractFilter {
 
 /** A filter that prints all the input data. */
 class PrintlnFilter extends AbstractFilter {
-    public void runInternal(String data) {
+    @Override
+    protected void runInternal(String data) {
         System.out.println(data);
     }
 }
