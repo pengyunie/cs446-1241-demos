@@ -1,6 +1,8 @@
 package ca.uwaterloo.cs446;
 
 public abstract class AbstractFilter {
+    public static String END_OF_STREAM = "<EOS>";
+
     protected Pipe input;
     protected Pipe output;
 
@@ -14,7 +16,7 @@ public abstract class AbstractFilter {
 
     /** Calls runInternal but collects debugging information about the run. */
     public void run(String data) {
-        // System.out.println("DEBUG: " + toString() + " running with input: " + data);
+        System.out.println("DEBUG: " + toString() + " running with input: " + data);
         runInternal(data);
     }
 
