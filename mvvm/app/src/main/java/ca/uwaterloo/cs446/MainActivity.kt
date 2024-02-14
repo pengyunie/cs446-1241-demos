@@ -18,9 +18,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
@@ -29,12 +27,13 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
 import ca.uwaterloo.cs446.ui.theme.HelloAndroidMVVMTheme
 import ca.uwaterloo.cs446.ui.theme.InstagramOrange
 import ca.uwaterloo.cs446.ui.theme.InstagramPeach
 import ca.uwaterloo.cs446.ui.theme.InstagramPurple
 import coil.compose.AsyncImage
-import kotlin.concurrent.thread
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,15 +46,18 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+
 @Composable
-fun MainContent() {
+fun MainContent(
+    viewModel: MainContentViewModel = viewModel()
+) {
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+
     Box(
         Modifier
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background),
     ) {
-        val clickedDogImage = remember { mutableStateOf<String?>(null) }
-
         Column {
             Text(
                 modifier = Modifier.padding(16.dp),
@@ -68,31 +70,22 @@ fun MainContent() {
                     .horizontalScroll(rememberScrollState())
                     .padding(horizontal = 16.dp, vertical = 16.dp)
             ) {
-                val dogImages = remember { mutableStateOf(emptyList<String>()) }
-
-                LaunchedEffect(Unit) {
-                    val presenter = MainContentPresenter()
-                    thread {
-                        dogImages.value = presenter.fetchDogImages()
-                    }
-                }
-
-                for (dogImage in dogImages.value) {
+                for (dogImage in uiState.dogImages) {
                     StoryAvatar(
                         imageUrl = dogImage,
                         onClick = {
-                            clickedDogImage.value = dogImage
+                            viewModel.updateClickedDogImage(dogImage)
                         }
                     )
                 }
             }
         }
 
-        if (clickedDogImage.value != null) {
+        if (uiState.clickedDogImage != null) {
             FullScreenStory(
-                imageUrl = clickedDogImage.value!!,
+                imageUrl = uiState.clickedDogImage!!,
                 onClick = {
-                    clickedDogImage.value = null
+                    viewModel.updateClickedDogImage(null)
                 }
             )
         }
