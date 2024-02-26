@@ -4,7 +4,7 @@
 _DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 function main() {
-        local parent_dir=${1:-$HOME/test/cidemo}; shift
+        local parent_dir=${1:-$HOME/test/simpleci}; shift
 
         if [ -d $parent_dir ]; then
                 echo "The target directory $parent_dir already exists, please delete it and try again."

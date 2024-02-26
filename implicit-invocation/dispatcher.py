@@ -101,6 +101,9 @@ class DispatcherHandler(socketserver.BaseRequestHandler):
                 data = self.data.split(":")[3:]
                 data = "\n".join(data)
                 f.write(data)
+            print("----------")
+            print(self.data)
+            print("----------")
             self.request.sendall(b"OK")
         else:
             self.request.sendall(b"Invalid command")

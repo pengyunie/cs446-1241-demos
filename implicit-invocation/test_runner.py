@@ -17,7 +17,6 @@ import socketserver
 import subprocess
 import time
 import threading
-import unittest
 
 import helpers
 
@@ -70,13 +69,18 @@ class TestHandler(socketserver.BaseRequestHandler):
         print(output)
         # run the tests
         test_folder = os.path.join(repo_folder, "tests")
-        suite = unittest.TestLoader().discover(test_folder)
-        result_file = open("results", "w")
-        unittest.TextTestRunner(result_file).run(suite)
-        result_file.close()
-        result_file = open("results", "r")
+        pwd = os.getcwd()
+        os.chdir(test_folder)
+        output = subprocess.run(
+            ["python", "-m", "unittest"], 
+            stdout=subprocess.PIPE, 
+            stderr=subprocess.STDOUT, 
+            text=True,
+        ).stdout
+        os.chdir(pwd)
+        with open("results", "w") as result_file:
+            result_file.write(output)
         # give the dispatcher the results
-        output = result_file.read()
         helpers.communicate(self.server.dispatcher_server["host"],
                             int(self.server.dispatcher_server["port"]),
                             "results:%s:%s:%s" % (commit_id, len(output), output))
