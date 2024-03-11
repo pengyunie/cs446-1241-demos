@@ -11,10 +11,12 @@ public class CompositeMain {
 		File opt = new File("Oriental Pearl Tower");
 		File bund = new File("The Bund");
 		File kiyomizu = new File("Kiyomizu Dera");
+		File hidden = new HiddenFile("Secret");
 
 		shanghai.add(opt);
 		shanghai.add(bund);
 		kyoto.add(kiyomizu);
+		kyoto.add(hidden);
 
 		photos.add(shanghai);
 		photos.add(kyoto);
@@ -24,6 +26,7 @@ public class CompositeMain {
 
 		components.add(photos);
 		components.add(new File("Important Document"));
+		components.add(new HiddenFile("Hidden Document"));
 
 		// Client code can treat components the same
 		for (Component component : components) {
