@@ -10,3 +10,4 @@ Instructions for installing Maven: https://maven.apache.org/install.html
 - [implicit-invocation](/implicit-invocation/) is based on the [CI example in "500 Lines or Less"](https://github.com/aosabook/500lines/tree/master/ci)
 - [pattern-adapter](/pattern-adapter/) is based on the [adapter-exercise](https://github.com/smcintosh/adapter-exercise)
 - [pattern-composite](/pattern-composite/) is based on the [composite-exercise](https://github.com/smcintosh/composite-exercise)
+- [pattern-decorator](/pattern-decorator/) is based on the [decorator-exercise](https://github.com/smcintosh/decorator-exercise)
