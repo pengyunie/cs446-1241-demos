@@ -25,8 +25,10 @@ public abstract class CrossCompiler {
 		compileToTarget();
 	}
 	
-	/** Primitive operations, to be implemented by subclasses. */
-	protected abstract void scanSources();
+	/** Primitive operations, some of them to be implemented by subclasses. */
+	protected void scanSources() {
+        sources = "sources";        
+	}
 	protected abstract void fetchDependencies();
 	protected abstract void compileToTarget();
 }
