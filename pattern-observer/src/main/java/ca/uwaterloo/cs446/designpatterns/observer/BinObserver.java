@@ -2,20 +2,20 @@ package ca.uwaterloo.cs446.designpatterns.observer;
 
 /** A concrete observer that represents numbers with a radix of 2. */
 public class BinObserver extends Observer {
-	private String binValue;
-
 	public BinObserver(Subject subject) {
-		this.subject = subject;
-		this.subject.attach(this);
+		// TODO: implement
+		throw new UnsupportedOperationException("Not implemented");
 	}
 
 	@Override
 	public void update() {
-		binValue = Integer.toBinaryString(subject.getState());
+		// TODO: implement
+		throw new UnsupportedOperationException("Not implemented");
 	}
 
 	@Override
 	public String getValue() {
-		return binValue;
+		// TODO: implement
+		throw new UnsupportedOperationException("Not implemented");
 	}
 }
