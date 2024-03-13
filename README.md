@@ -12,3 +12,4 @@ Instructions for installing Maven: https://maven.apache.org/install.html
 - [pattern-composite](/pattern-composite/) is based on the [composite-exercise](https://github.com/smcintosh/composite-exercise)
 - [pattern-decorator](/pattern-decorator/) is based on the [decorator-exercise](https://github.com/smcintosh/decorator-exercise)
 - [pattern-strategy](/pattern-strategy/) is based on the [strategy-exercise](https://github.com/smcintosh/strategy-exercise)
+- [pattern-observer](/pattern-observer/) is based on the [observer-exercise](https://github.com/smcintosh/observer-exercise)
