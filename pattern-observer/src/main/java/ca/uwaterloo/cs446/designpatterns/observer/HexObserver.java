@@ -5,9 +5,8 @@ public class HexObserver extends Observer {
 	private String hexValue;
 
 	public HexObserver(Subject subject) {
-		this.subject = subject;
-		this.subject.attach(this);
-		hexValue = null;
+		super(subject);
+		// hexValue is implicitly initialized to null
 	}
 
 	@Override

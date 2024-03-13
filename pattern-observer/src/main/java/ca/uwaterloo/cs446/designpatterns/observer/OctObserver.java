@@ -5,9 +5,8 @@ public class OctObserver extends Observer {
 	private String octValue;
 	
 	public OctObserver(Subject subject) {
-		this.subject = subject;
-		this.subject.attach(this);
-		octValue = null;
+		super(subject);
+		// octValue is implicitly initialized to null
 	}
 	
 	@Override
