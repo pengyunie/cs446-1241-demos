@@ -1,4 +1,4 @@
-# Strategy Demo
+# Singleton Demo
 
 * Run SingletonTest.java as a JUnit test
 
