@@ -14,3 +14,4 @@ Instructions for installing Maven: https://maven.apache.org/install.html
 - [pattern-strategy](/pattern-strategy/) is based on the [strategy-exercise](https://github.com/smcintosh/strategy-exercise)
 - [pattern-observer](/pattern-observer/) is based on the [observer-exercise](https://github.com/smcintosh/observer-exercise)
 - [pattern-template-method](/pattern-template-method/) is base don the [template-method-exercise](https://github.com/smcintosh/template-method-exercise)
+- [pattern-factory-method](/pattern-factory-method/) is based on the [factory-method-exercise](https://github.com/smcintosh/factory-method-exercise)
