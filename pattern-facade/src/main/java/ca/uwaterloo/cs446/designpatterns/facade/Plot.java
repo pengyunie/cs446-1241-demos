@@ -23,8 +23,9 @@ public class Plot {
      * @param data - an array of points to plot, each point is an array of 2 doubles (x, y).
      */
     public void linePlot(double[][] data) {
-        // TODO: implement
-        throw new UnsupportedOperationException("Not implemented.");
+        for (int i = 0; i < data.length - 1; i++) {
+            shapes.add(new Line(new Point(data[i][0], data[i][1]), new Point(data[i + 1][0], data[i + 1][1])));
+        }
     }
 
     /**
