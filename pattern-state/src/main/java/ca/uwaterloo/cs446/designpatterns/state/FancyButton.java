@@ -19,6 +19,14 @@ public class FancyButton {
         currentState.click(this);
     }
 
+    public void disable() {
+        currentState.disable(this);
+    }
+
+    public void enable() {
+        currentState.enable(this);
+    }
+
     public void setState(State state) {
         this.currentState = state;
     }

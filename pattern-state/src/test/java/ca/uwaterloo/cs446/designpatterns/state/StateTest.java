@@ -17,4 +17,18 @@ public class StateTest {
         button.click();
         Assert.assertTrue(button.getState() instanceof OffState);
     }
+
+    @Test
+    public void testDisable() {
+        FancyButton button = new FancyButton(3);
+        Assert.assertTrue(button.getState() instanceof OffState);
+        button.disable();
+        Assert.assertTrue(button.getState() instanceof DisabledState);
+        button.click();
+        Assert.assertTrue(button.getState() instanceof DisabledState);
+        button.enable();
+        Assert.assertTrue(button.getState() instanceof OffState);
+        button.click();
+        Assert.assertTrue(button.getState() instanceof OnState);
+    }
 }

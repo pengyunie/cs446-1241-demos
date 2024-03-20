@@ -14,4 +14,12 @@ public class OnState implements State {
             button.setState(new OffState());
         }
     }
+
+    public void disable(FancyButton button) {
+        button.setState(new DisabledState(this));
+    }
+
+    public void enable(FancyButton button) {
+        // do nothing
+    }
 }
