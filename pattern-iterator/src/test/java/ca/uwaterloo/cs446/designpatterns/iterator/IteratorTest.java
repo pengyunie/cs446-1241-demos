@@ -2,6 +2,7 @@ package ca.uwaterloo.cs446.designpatterns.iterator;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import org.junit.Assert;
@@ -21,6 +22,24 @@ public class IteratorTest {
             iterator.next();
         }
         Assert.assertTrue(iterator.done());
+    }
+
+    @Test
+    public void testRandomIterator() {
+        List<Integer> data = new ArrayList(Arrays.asList(1, 2, 3, 4, 5));
+        AbstractDataGenerator generator = new RandomDataGenerator(data);
+        AbstractDataIterator iterator = generator.getIterator();
+
+        List<Integer> seenData = new ArrayList<>();
+        for (int i = 1; i <= 5; i++) {
+            Assert.assertFalse(iterator.done());
+            seenData.add(iterator.get());
+            iterator.next();
+        }
+        Assert.assertTrue(iterator.done());
+        Collections.sort(data);
+        Collections.sort(seenData);
+        Assert.assertArrayEquals(data.toArray(), seenData.toArray());
     }
 
     @Test
